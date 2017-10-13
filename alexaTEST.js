@@ -1,6 +1,6 @@
 'use strict';
 const Alexa = require("alexa-sdk");
-const datamuse = require("datamuse")
+const datamuse = require("datamuse");
 exports.handler = function(event, context, callback) {
     const alexa = Alexa.handler(event, context);
     alexa.registerHandlers(handlers);
