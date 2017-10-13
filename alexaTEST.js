@@ -1,6 +1,6 @@
 'use strict';
 const Alexa = require("alexa-sdk");
-const datamuse = require('datamuse');
+const datamuse = require("datamuse")
 exports.handler = function(event, context, callback) {
     const alexa = Alexa.handler(event, context);
     alexa.registerHandlers(handlers);
@@ -9,18 +9,21 @@ exports.handler = function(event, context, callback) {
 
 const handlers = {
     'LaunchRequest': function () {
-        this.emit('Please say a word to rhyme with');
-		
-    },
-    'RhymeIntent': function () {
         this.emit('SayHello');
-		rhyme = request.datmuse.words.datamuse.value;
-		function getRhyme(rhyme)
-		
+	rhyme = request.datamuse.words.datamuse.ask_user; //set var rhyme to pull a request from API
+	function getRhyme()
+    },
+    'RhymeIntent': function () {   //used to actually say the rhyme
+        this.emit('SayRhyme')
+    },
+    'SayRhyme': function () {
+        
+	this.response.speak(rhyme);
+        this.emit(':responseReady');
     },
     'AMAZON.HelpIntent': function () {
-        const speechOutput = 'Say any word, and I will rhyme it for you.. ';
-        const reprompt = 'Its easy! try saying skate!.';
+        const speechOutput = 'Testing API with alexa. ';
+        const reprompt = 'Try asking me what rhymes with boat.';
 
         this.response.speak(speechOutput).listen(reprompt);
         this.emit(':responseReady');
