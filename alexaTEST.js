@@ -10,7 +10,7 @@ exports.handler = function(event, context, callback) {
 const handlers = {
     'LaunchRequest': function () {
 	rhyme = request.datamuse.words.datamuse.ask_user; //set var rhyme to pull a request from API
-	function getRhyme()
+	getRhyme()
 	this.emit('SayRhyme');
     },
     'RhymeIntent': function () {   //used to actually say the rhyme
